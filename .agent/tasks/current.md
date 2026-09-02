@@ -17,6 +17,7 @@ Update this file at session start (in-progress) and when closing work. Finished 
 - [x] **Safe area + refresh** — all main UI screens use `react-native-safe-area-context`; `Screen` supports `RefreshControl` via `refreshable`, and main scroll screens have pull-to-refresh enabled.
 - [x] **Agent workflow rule** — `.agent/AGENTS.md` now requires updating agent docs before any commit/push, and lists which agent file to update for code changes, flow changes, decisions, requirements, and lessons.
 - [x] **Expo Router + first-launch onboarding** — added Home, Plan, Menu, History, and Stats tabs; added a safe-area welcome screen; Start Learning persists an AsyncStorage flag and replaces the route with Home; returning users skip onboarding. Verified with `npx expo-doctor` (18/18) and `npx expo export --platform web`.
+- [x] **Tab pull-to-refresh** — shared `TabPage` uses a controlled `RefreshControl`; all five tabs support the pull gesture and can provide an async `onRefresh` action.
 
 ## Ready (approved but not started)
 

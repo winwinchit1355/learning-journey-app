@@ -1,22 +1,52 @@
 import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function TabPage({ title, description, icon }) {
+export default function TabPage({ title, description, icon, onRefresh }) {
+  const [refreshing, setRefreshing] = useState(false);
+
+  async function handleRefresh() {
+    setRefreshing(true);
+
+    try {
+      if (onRefresh) {
+        await onRefresh();
+      } else {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      }
+    } finally {
+      setRefreshing(false);
+    }
+  }
+
   return (
     <SafeAreaView style={styles.screen} edges={["top"]}>
-      <View style={styles.header}>
-        <Text style={styles.eyebrow}>LEARNING JOURNEY</Text>
-        <Text style={styles.title}>{title}</Text>
-      </View>
-
-      <View style={styles.card}>
-        <View style={styles.icon}>
-          <Ionicons name={icon} size={32} color="#5B4BFA" />
+      <ScrollView
+        alwaysBounceVertical
+        contentContainerStyle={styles.content}
+        refreshControl={(
+          <RefreshControl
+            colors={["#5B4BFA"]}
+            onRefresh={handleRefresh}
+            refreshing={refreshing}
+            tintColor="#5B4BFA"
+          />
+        )}
+      >
+        <View style={styles.header}>
+          <Text style={styles.eyebrow}>LEARNING JOURNEY</Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
-        <Text style={styles.cardTitle}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
-      </View>
+
+        <View style={styles.card}>
+          <View style={styles.icon}>
+            <Ionicons name={icon} size={32} color="#5B4BFA" />
+          </View>
+          <Text style={styles.cardTitle}>{title}</Text>
+          <Text style={styles.description}>{description}</Text>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -25,6 +55,9 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: "#F5F6FA",
+  },
+  content: {
+    flexGrow: 1,
     paddingHorizontal: 20,
   },
   header: {
