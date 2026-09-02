@@ -15,7 +15,7 @@ Derived from design PDF (19 screens). Statuses: planned / in-progress / done.
 - [x] Stats tab — week/month/year, streaks, bar chart, distribution
 - [x] Learning Plan — daily/weekly/monthly scheduling per day-of-week
 - [x] Menu — Learning Plan, Subjects, Tags, Settings, Profile, Daily Goal, Export Data
-- [ ] Onboarding
+- [x] Onboarding — shown only on first launch; Start Learning persists completion and opens Home
 
 ## P1 — Settings & profile
 
@@ -40,7 +40,7 @@ Derived from design PDF (19 screens). Statuses: planned / in-progress / done.
 - [x] Today&apos;s Plan detail screen
 - [x] Tags management screen
 - [x] Tag selection modal for Add Subject
-- [ ] Onboarding refresh
+- [x] Onboarding refresh
 
 ## Constraints
 

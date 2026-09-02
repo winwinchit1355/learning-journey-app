@@ -4,6 +4,7 @@ Log of architectural / product decisions. Latest first.
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| 2026-09-02 | Persist first-launch onboarding completion in AsyncStorage | The welcome screen appears once; returning users and restored tab routes must open Home without showing onboarding again |
 | 2026-08-29 | Light-only UI; dark mode not active | Design renders light; removed `bg-black`/dark class activation; `app.json userInterfaceStyle: "light"` |
 | 2026-08-29 | Initial data is empty (no seeded sessions/plan) | First launch shows the empty dashboard state by design |
 | 2026-08-29 | BaaS approach confirmed: Firebase Auth + Cloud Firestore for account & cloud sync; NO custom backend API | Developer has no hosting server; BaaS provides auth + database with zero backend code. Local-first SQLite stays the source of truth; Firestore is the sync/backup copy. See `CLOUD-SYNC-STRATEGY.md` |

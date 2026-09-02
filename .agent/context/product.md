@@ -10,7 +10,7 @@ Light-only UI. Background `#F5F6FA`, cards `#FFFFFF`, primary text `#14161C`, mu
 
 ## Screens (current design set)
 
-1. **Onboarding** — tagline, "Start Learning", "I already have an account". Light-themed.
+1. **Onboarding** — first-launch welcome screen with tagline and "Start Learning". Pressing the CTA persists `learning_journey.has_seen_welcome` in AsyncStorage and replaces the route with `/(tabs)/home`; returning users skip onboarding and open Home directly.
 2. **Home (empty)** — empty-state hero when no data; zeros on metrics. Initial data is empty by default.
 3. **Home (filled)** — today's total time, goal %, sessions, streak, weekly total, today's activities, latest subjects, weekly view.
 4. **Log Study Session** — subject, topic, date, start/end time (auto duration), notes.

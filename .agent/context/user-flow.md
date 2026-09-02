@@ -1,8 +1,8 @@
 # User Flow
 
 ```
-Onboarding (1)
-   │ "Start Learning"
+Onboarding (1, first launch only)
+   │ "Start Learning" → persist welcome-seen flag in AsyncStorage
    ▼
 Home (2/3) ──▶ central hub
    │ Add Study ────────▶ Log Study Session modal (4) ──▶ saves to SQLite ──▶ Home refreshes
@@ -20,6 +20,9 @@ Home (2/3) ──▶ central hub
          ├── Export Data (16) ──▶ share CSV/JSON/PDF
          └── Import Data (17) ──▶ processing (18) ──▶ success summary (19)
 ```
+
+- Returning users with the welcome-seen flag open Home directly.
+- The tabs layout checks the flag and redirects first-time users to Onboarding if a tab route is opened directly.
 
 ## Auth branch (optional)
 
