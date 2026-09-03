@@ -10,6 +10,10 @@ Light-only UI. Background `#F5F6FA`, cards `#FFFFFF`, primary text `#14161C`, mu
 
 ## Screens (current design set)
 
+Welcome includes the reference's "I already have an account" action beneath Start Learning. Until authentication is implemented, this action displays an explicit unavailable message rather than navigating to a nonexistent login route.
+
+Welcome layout: content scrolls independently of the Start Learning footer so the CTA remains reachable on smaller Android screens. Completion is retained in AsyncStorage; Home never clears the flag. Clearing app data or reinstalling resets onboarding.
+
 1. **Onboarding** — first-launch welcome screen with tagline and "Start Learning". Pressing the CTA persists `learning_journey.has_seen_welcome` in AsyncStorage and replaces the route with `/(tabs)/home`; returning users skip onboarding and open Home directly.
 2. **Home (empty)** — empty-state hero when no data; zeros on metrics. Initial data is empty by default.
 3. **Home (filled)** — today's total time, goal %, sessions, streak, weekly total, today's activities, latest subjects, weekly view.

@@ -2,6 +2,9 @@
 
 Reusable lessons learned. Latest at top.
 
+- Keep the onboarding completion flag persistent: never delete it during Home rendering. Save it before navigating away from welcome.
+- Welcome CTA regression: use a direct Pressable style for its background; the prior callback-style version was reported invisible on Android. Root cause is not confirmed; verify on device before treating this as a general NativeWind limitation.
+
 - **Zustand selector gotcha**: never return a fresh object from a selector, e.g. `useAppStore((s) => Object.fromEntries(...))`. Zustand re-renders whenever the selector output is a new reference → triggers "Maximum update depth exceeded". Select stable slices (`s.subjects`) and derive maps with `useMemo`.
 - **NativeWind v4 has no `setColorScheme` export**: calling `setColorScheme("light")` from `nativewind` throws `TypeError: (0 , _nativewind.setColorScheme) is not a function`. Force light via `app.json userInterfaceStyle: "light"` + static classes instead.
 - **Expo SDK 57 + npm install order**: npm auto-resolves `react-dom` to latest (19.2.8) which conflicts with Expo's pinned React (19.2.3). Install `react-dom@19.2.3` and `react-native-web` explicitly, or use `npx expo install` for web deps.

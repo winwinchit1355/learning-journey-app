@@ -5,6 +5,7 @@ import {
   ActivityIndicator,
   Alert,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -28,7 +29,10 @@ export default function WelcomeScreen() {
       await markWelcomeSeen();
       router.replace("/(tabs)/home");
     } catch {
-      Alert.alert("Unable to continue", "Please try again. Your progress was not saved.");
+      Alert.alert(
+        "Unable to continue",
+        "Please try again. Your progress was not saved.",
+      );
       setStarting(false);
     }
   }
@@ -47,130 +51,173 @@ export default function WelcomeScreen() {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <View style={styles.content}>
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.illustration}>
           <View style={styles.largeCircle} />
           <View style={styles.tealCircle} />
-          <View style={styles.orangeCircle} />
           <View style={styles.bookBadge}>
-            <Ionicons name="book-outline" size={54} color="#5B4BFA" />
+            <Ionicons name="book-outline" size={72} color="#635BFF" />
+          </View>
+          <View style={styles.accents}>
+            <Ionicons name="leaf-outline" size={25} color="#009D91" />
+            <Ionicons name="sparkles-outline" size={25} color="#FF6A21" />
           </View>
         </View>
 
         <Text style={styles.title}>Track Your Learning</Text>
         <Text style={styles.description}>
-          Build a better learning habit, one day at a time. Record sessions and review your growth.
+          Build a better learning habit, one day at a time. Simply record
+          sessions &amp; review your growth.
         </Text>
-      </View>
+      </ScrollView>
 
-      <Pressable
-        accessibilityRole="button"
-        disabled={starting}
-        onPress={startLearning}
-        style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
-      >
-        {starting ? (
-          <ActivityIndicator color="#FFFFFF" />
-        ) : (
-          <Text style={styles.buttonText}>Start Learning</Text>
-        )}
-      </Pressable>
+      <View style={styles.footer}>
+        <Pressable
+          accessibilityRole="button"
+          disabled={starting}
+          onPress={startLearning}
+          style={styles.button}
+          android_ripple={{ color: "#8175FF" }}
+        >
+          {starting ? (
+            <ActivityIndicator color="#FFFFFF" />
+          ) : (
+            <Text style={styles.buttonText}>Start Learning</Text>
+          )}
+        </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() =>
+            Alert.alert(
+              "Account sign-in",
+              "Account sign-in is not available yet. You can use Start Learning without an account.",
+            )
+          }
+          style={styles.accountLink}
+        >
+          <Text style={styles.accountLinkText}>I already have an account</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: "#F5F6FA",
+    backgroundColor: "#FFFFFF",
     flex: 1,
-    justifyContent: "space-between",
-    paddingHorizontal: 24,
-    paddingVertical: 28,
+  },
+  scroll: {
+    flex: 1,
+    minHeight: 0,
+  },
+  footer: {
+    flexShrink: 0,
+    paddingHorizontal: 32,
+    paddingTop: 16,
+    paddingBottom: 12,
+    backgroundColor: "#FFFFFF",
   },
   loading: {
     alignItems: "center",
-    backgroundColor: "#F5F6FA",
+    backgroundColor: "#FFFFFF",
     flex: 1,
     justifyContent: "center",
   },
   content: {
     alignItems: "center",
-    flex: 1,
+    flexGrow: 1,
     justifyContent: "center",
+    paddingHorizontal: 24,
+    paddingVertical: 32,
   },
   illustration: {
     alignItems: "center",
-    height: 210,
+    height: 240,
     justifyContent: "center",
-    marginBottom: 36,
+    marginBottom: 48,
     position: "relative",
-    width: 220,
+    width: 240,
   },
   largeCircle: {
-    backgroundColor: "#E9E7FF",
-    borderRadius: 90,
-    height: 180,
+    backgroundColor: "#F6F3FF",
+    borderRadius: 120,
+    height: 240,
     position: "absolute",
-    width: 180,
+    width: 240,
   },
   tealCircle: {
-    backgroundColor: "#DDF5F2",
-    borderRadius: 58,
-    height: 116,
+    backgroundColor: "#DFF7F7",
+    borderRadius: 80,
+    height: 160,
     position: "absolute",
     right: 0,
-    top: 4,
-    width: 116,
+    top: 40,
+    width: 160,
   },
-  orangeCircle: {
-    backgroundColor: "#FFF0E5",
-    borderRadius: 42,
-    bottom: 8,
-    height: 84,
-    left: 4,
+  accents: {
+    flexDirection: "row",
+    gap: 10,
+    top: 136,
+    left: 92,
     position: "absolute",
-    width: 84,
   },
   bookBadge: {
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
-    borderRadius: 40,
-    elevation: 3,
+    position: "absolute",
+    top: 38,
     height: 80,
     justifyContent: "center",
-    shadowColor: "#443D91",
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.12,
-    shadowRadius: 16,
     width: 80,
   },
   title: {
-    color: "#14161C",
+    color: "#20202F",
     fontSize: 30,
     fontWeight: "800",
     textAlign: "center",
   },
   description: {
-    color: "#7A7F8C",
-    fontSize: 16,
+    color: "#6E6A82",
+    fontSize: 15,
     lineHeight: 24,
-    marginTop: 14,
-    maxWidth: 330,
+    marginTop: 18,
+    maxWidth: 354,
     textAlign: "center",
   },
   button: {
     alignItems: "center",
-    backgroundColor: "#5B4BFA",
-    borderRadius: 16,
-    height: 56,
+    backgroundColor: "#6257E8",
+    borderRadius: 28,
+    minHeight: 56,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    flexShrink: 0,
     justifyContent: "center",
-  },
-  buttonPressed: {
-    opacity: 0.86,
   },
   buttonText: {
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "700",
+    lineHeight: 24,
+    textAlign: "center",
+    includeFontPadding: false,
+  },
+  accountLink: {
+    minHeight: 44,
+    marginTop: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  accountLinkText: {
+    color: "#635BFF",
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: "600",
+    textDecorationLine: "underline",
+    textAlign: "center",
   },
 });

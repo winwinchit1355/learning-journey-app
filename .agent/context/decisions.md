@@ -4,6 +4,8 @@ Log of architectural / product decisions. Latest first.
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| 2026-09-04 | NativeWind v4 with Tailwind CSS 3.4 is the universal styling layer | Provides Tailwind-style `className` support across Expo web, Android, and iOS while matching the project's desired stack |
+| 2026-09-02 | Three Zustand stores (`studyStore`, `progressStore`, `settingsStore`), each persisted to AsyncStorage via `persist` middleware | Screens stay decoupled from storage; changes to one domain don't rerender others; persistence is declarative |
 | 2026-09-02 | Persist first-launch onboarding completion in AsyncStorage | The welcome screen appears once; returning users and restored tab routes must open Home without showing onboarding again |
 | 2026-08-29 | Light-only UI; dark mode not active | Design renders light; removed `bg-black`/dark class activation; `app.json userInterfaceStyle: "light"` |
 | 2026-08-29 | Initial data is empty (no seeded sessions/plan) | First launch shows the empty dashboard state by design |
