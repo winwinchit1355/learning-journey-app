@@ -7,7 +7,7 @@ Derived from design PDF (19 screens). Statuses: planned / in-progress / done.
 - [x] Scaffold Expo + tabs + theme base (dark mode ready)
 - [ ] SQLite schema + repository layer (`subjects`, `study_sessions`, `settings`, `learning_plan_items`)
 - [x] Daily study goal setting (hours/minutes picker)
-- [x] Home tab — filled state, weekly view strip, today's progress cards
+- [x] Home tab — empty state done (dashboard-empty-state); filled state pending real data (dashboard.jpg)
 - [x] Log Study Session — auto duration calc
 - [x] Add Subject
 - [x] Subjects tab — totals + % of goal

@@ -34,7 +34,15 @@ Main instructions every agent session must follow. Read the referenced files bef
 - Non-obvious bug, tool, library, or workflow lesson: update `.agent/memory/lessons.md` so future agents avoid repeating it.
 - Before any `git commit` or `git push`: check `git diff -- .agent` and ensure the relevant agent docs are included.
 
-## 5. Token efficiency (abridged)
+## 5. Commit & push restrictions (mandatory)
+
+- Never `git commit` or `git push` without explicit approval from the developer first.
+- Always ask before committing: present a summary of changes and await an explicit "yes" (e.g. "Shall I commit these changes?").
+- Do not auto-commit, auto-push, or use `--force`/`-f` unless the developer explicitly requested it.
+- A commit must only be created after: (1) agent docs are current (section 4), and (2) the developer approves.
+- If work is unfinished or verification failed, leave the working tree untouched until the developer decides.
+
+## 6. Token efficiency (abridged)
 
 - Targeted reads (`offset`/`limit`); never re-read unchanged files.
 - Grep/glob before reading; delegate wide exploration to subagents.
@@ -43,14 +51,14 @@ Main instructions every agent session must follow. Read the referenced files bef
 - Keep replies short, direct, no filler, no emojis.
 - Prefer surgical `edit` over whole-file rewrites.
 
-## 6. Conventions
+## 7. Conventions
 
 - Hydrate only from `.agent/` docs + codebase — never from memory of earlier projects.
 - All IDs are UUID v4 (expo-crypto). Dates via dayjs, stored ISO.
 - Local-first: SQLite is the source of truth. Firebase sync optional for logged-in users (LWW by `updated_at`).
 - Follow `rules/*.md`; where a rule conflicts with the developer's explicit instruction, the instruction wins.
 
-## 7. Verification commands
+## 8. Verification commands
 
 ```sh
 npx eslint .

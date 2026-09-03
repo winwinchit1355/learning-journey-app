@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import { RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
+import { View, RefreshControl, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TabPage({ title, description, icon, onRefresh }) {
@@ -21,10 +21,10 @@ export default function TabPage({ title, description, icon, onRefresh }) {
   }
 
   return (
-    <SafeAreaView style={styles.screen} edges={["top"]}>
+    <SafeAreaView className="flex-1 bg-[#F5F6FA]" edges={["top"]}>
       <ScrollView
         alwaysBounceVertical
-        contentContainerStyle={styles.content}
+        className="flex-1 px-5"
         refreshControl={(
           <RefreshControl
             colors={["#5B4BFA"]}
@@ -34,74 +34,25 @@ export default function TabPage({ title, description, icon, onRefresh }) {
           />
         )}
       >
-        <View style={styles.header}>
-          <Text style={styles.eyebrow}>LEARNING JOURNEY</Text>
-          <Text style={styles.title}>{title}</Text>
+        <View className="pt-6 pb-5">
+          <Text className="text-[#777D8A] text-11 font-semibold tracking-wider">
+            LEARNING JOURNEY
+          </Text>
+          <Text className="text-[#171922] text-30 font-extrabold mt-1.5">
+            {title}
+          </Text>
         </View>
 
-        <View style={styles.card}>
-          <View style={styles.icon}>
+        <View className="items-center bg-white rounded-2xl px-7 py-10">
+          <View className="w-16 h-16 rounded-2xl bg-[#ECEAFE] items-center justify-center mb-5">
             <Ionicons name={icon} size={32} color="#5B4BFA" />
           </View>
-          <Text style={styles.cardTitle}>{title}</Text>
-          <Text style={styles.description}>{description}</Text>
+          <Text className="text-[#171922] text-20 font-bold">{title}</Text>
+          <Text className="text-[#777D8A] text-15 leading-6 mt-2 text-center">
+            {description}
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: "#F5F6FA",
-  },
-  content: {
-    flexGrow: 1,
-    paddingHorizontal: 20,
-  },
-  header: {
-    paddingBottom: 24,
-    paddingTop: 24,
-  },
-  eyebrow: {
-    color: "#777D8A",
-    fontSize: 11,
-    fontWeight: "700",
-    letterSpacing: 1.4,
-  },
-  title: {
-    color: "#171922",
-    fontSize: 30,
-    fontWeight: "800",
-    marginTop: 6,
-  },
-  card: {
-    alignItems: "center",
-    backgroundColor: "#FFFFFF",
-    borderRadius: 24,
-    paddingHorizontal: 28,
-    paddingVertical: 40,
-  },
-  icon: {
-    alignItems: "center",
-    backgroundColor: "#ECEAFE",
-    borderRadius: 24,
-    height: 64,
-    justifyContent: "center",
-    marginBottom: 20,
-    width: 64,
-  },
-  cardTitle: {
-    color: "#171922",
-    fontSize: 20,
-    fontWeight: "700",
-  },
-  description: {
-    color: "#777D8A",
-    fontSize: 15,
-    lineHeight: 22,
-    marginTop: 8,
-    textAlign: "center",
-  },
-});
