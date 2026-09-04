@@ -4,6 +4,8 @@ Update this file at session start (in-progress) and when closing work. Finished 
 
 ## Now
 
+- [x] **Login screen UI** — added `app/login.js` from `login.jpg` with NativeWind, keyboard-aware layout, input validation, and Remember me toggle; welcome account action opens `/login`. Auth/reset/registration remain explicit placeholders. Formatting and Babel syntax verified; device testing pending.
+
 - [x] **Welcome reference alignment** — rechecked `initial-page.jpg`; updated overlapping circles/book/accents, reference wording, colors, and underlined account CTA. Account CTA explicitly reports sign-in unavailable until auth is implemented. Formatting and syntax checks passed; Android visual verification pending.
 
 - [x] **Welcome button background follow-up** — replaced the Pressable style callback with a direct style and Android ripple after the purple background was reported missing. Android visual verification pending.

@@ -10,7 +10,7 @@ Light-only UI. Background `#F5F6FA`, cards `#FFFFFF`, primary text `#14161C`, mu
 
 ## Screens (current design set)
 
-Welcome includes the reference's "I already have an account" action beneath Start Learning. Until authentication is implemented, this action displays an explicit unavailable message rather than navigating to a nonexistent login route.
+Welcome includes "I already have an account" beneath Start Learning, opening `/login` outside the tab navigator. Login matches `login.jpg` with email/password inputs, Remember me, Forgot password, Log In, and Create one. Authentication is not connected: submit validates inputs then reports unavailable; reset/registration actions also report unavailable. Passwords are not persisted, and Remember me is currently form state only. Opening login does not mark onboarding complete.
 
 Welcome layout: content scrolls independently of the Start Learning footer so the CTA remains reachable on smaller Android screens. Completion is retained in AsyncStorage; Home never clears the flag. Clearing app data or reinstalling resets onboarding.
 

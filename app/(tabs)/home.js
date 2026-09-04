@@ -169,7 +169,7 @@ export default function HomeScreen() {
           >
             <Ionicons name="add" size={25} color="#FFFFFF" />
             <Text className="ml-2 text-sm font-bold text-white">
-              Add Subject
+              Add Study
             </Text>
           </Pressable>
         </View>

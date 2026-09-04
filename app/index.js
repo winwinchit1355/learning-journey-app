@@ -91,12 +91,7 @@ export default function WelcomeScreen() {
         </Pressable>
         <Pressable
           accessibilityRole="button"
-          onPress={() =>
-            Alert.alert(
-              "Account sign-in",
-              "Account sign-in is not available yet. You can use Start Learning without an account.",
-            )
-          }
+          onPress={() => router.push("/login")}
           style={styles.accountLink}
         >
           <Text style={styles.accountLinkText}>I already have an account</Text>
