@@ -4,6 +4,8 @@ Update this file at session start (in-progress) and when closing work. Finished 
 
 ## Now
 
+- [x] **CI preview deployment** — changed the GitHub Actions Android EAS build from the `production` profile to `preview` so successful manual/testing runs produce an internal test build instead of a store release build.
+
 - [x] **Login screen UI** — added `app/login.js` from `login.jpg` with NativeWind, keyboard-aware layout, input validation, and Remember me toggle; welcome account action opens `/login`. Auth/reset/registration remain explicit placeholders. Formatting and Babel syntax verified; device testing pending.
 
 - [x] **Welcome reference alignment** — rechecked `initial-page.jpg`; updated overlapping circles/book/accents, reference wording, colors, and underlined account CTA. Account CTA explicitly reports sign-in unavailable until auth is implemented. Formatting and syntax checks passed; Android visual verification pending.
