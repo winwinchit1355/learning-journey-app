@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "LearningJourneyApp",
-    "slug": "LearningJourneyApp",
+    "slug": "learning-journey-app",
     "scheme": "learningjourneyapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,7 +21,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.winwinchit.learningjourneyapp"
     },
     "web": {
       "bundler": "metro",
@@ -30,6 +31,13 @@
     "plugins": [
       "expo-router",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "61cc89d1-62d9-4932-a492-f431cd1144f0"
+      }
+    },
+    "owner": "winwinchit"
   }
 }
