@@ -12,10 +12,17 @@ const ICONS = {
   stats: ["bar-chart", "bar-chart-outline"],
 };
 
+
 function tabIcon(name) {
-  return ({ color, focused, size }) => (
-    <Ionicons name={ICONS[name][focused ? 0 : 1]} color={color} size={size} />
-  );
+  return function TabIcon({ color, focused, size }) {
+    return (
+      <Ionicons
+        name={ICONS[name][focused ? 0 : 1]}
+        color={color}
+        size={size}
+      />
+    );
+  };
 }
 
 export default function TabsLayout() {

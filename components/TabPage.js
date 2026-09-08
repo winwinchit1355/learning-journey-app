@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import { View, RefreshControl, ScrollView } from "react-native";
+import { View, RefreshControl, ScrollView, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TabPage({ title, description, icon, onRefresh }) {
@@ -34,6 +34,7 @@ export default function TabPage({ title, description, icon, onRefresh }) {
           />
         )}
       >
+        
         <View className="pt-6 pb-5">
           <Text className="text-[#777D8A] text-11 font-semibold tracking-wider">
             LEARNING JOURNEY
